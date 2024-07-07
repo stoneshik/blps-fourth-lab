@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: choice
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  kafka:
+    auto-offset-reset: latest
+    bootstrap-servers: localhost:9092
+    group-id: choice-group
+    topic:
+      name: test-topic
+server:
+  port: 8081

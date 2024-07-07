@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: main
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      topic: test-topic
+server:
+  port: 8080
+secret:
+  key: ${SECRET_KEY}
+token:
+  expire_time: ${TOKEN_EXPIRE_TIME}
+  refresh_time: ${TOKEN_REFRESH_TIME}
+cors:
+  urls: "*"
