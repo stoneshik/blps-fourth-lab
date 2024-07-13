@@ -1,4 +1,4 @@
-package lab.blps.security.bd.entities;
+package lab.blps.security.bd.entities.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;

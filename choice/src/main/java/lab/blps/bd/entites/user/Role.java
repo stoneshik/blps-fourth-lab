@@ -1,4 +1,4 @@
-package lab.blps.security.bd.entities;
+package lab.blps.bd.entites.user;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,6 +16,4 @@ public class Role {
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private RoleEnum name;
-
-    public Role() {}
 }

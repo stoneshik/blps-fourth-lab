@@ -1,11 +1,15 @@
 package lab.blps.security.dto.response;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+import lab.blps.dto.Dto;
+
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class JwtResponseDto {
+public class JwtResponseDto extends Dto {
     private String token;
     private String type = "Bearer";
     private String refreshToken;

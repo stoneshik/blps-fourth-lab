@@ -1,7 +1,8 @@
 package lab.blps.security.repositories;
 
 import lab.blps.security.bd.entities.RefreshToken;
-import lab.blps.security.bd.entities.User;
+import lab.blps.security.bd.entities.user.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;

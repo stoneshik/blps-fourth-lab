@@ -1,6 +1,6 @@
 package lab.blps.security.services;
 
-import lab.blps.security.bd.entities.User;
+import lab.blps.security.bd.entities.user.User;
 import lab.blps.security.model.UserDetailsImpl;
 import lab.blps.security.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;

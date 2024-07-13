@@ -1,4 +1,4 @@
-package lab.blps.security.bd.entities;
+package lab.blps.bd.entites.user;
 
 public enum RoleEnum {
     ROLE_USER,

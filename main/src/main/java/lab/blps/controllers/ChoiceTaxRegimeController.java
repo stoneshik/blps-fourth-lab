@@ -7,7 +7,6 @@ import lab.blps.exceptions.WrongFormatUserRequestException;
 import lab.blps.main.dto.TaxRegimeChoiceDto;
 import lab.blps.main.dto.TaxRegimeWithFeaturesAndCategoryDto;
 import lab.blps.main.services.ChoiceTaxRegimeService;
-import lab.blps.main.services.KafkaService;
 import lab.blps.main.services.entities.TaxRegimeChoice;
 import lab.blps.main.services.entities.TaxRegimeWithFeaturesAndCategory;
 import lab.blps.main.services.entities.map.MapTaxRegimeChoice;
@@ -31,7 +30,6 @@ import java.util.List;
 public class ChoiceTaxRegimeController {
     private final ChoiceTaxRegimeService choiceTaxRegimeService;
     private final UserService userService;
-    private final KafkaService kafkaService;
 
     @Transactional
     @GetMapping(
@@ -48,9 +46,6 @@ public class ChoiceTaxRegimeController {
             throw new IncorrectEnumConstant("Ошибка: Передана неправильная константа");
         }
         requestFee(taxRegimeChoiceDto.getUserId(), 1);
-
-        kafkaService.sendMessage("aboba");
-
         List<TaxRegimeWithFeaturesAndCategory> taxRegimes = choiceTaxRegimeService.choice(taxRegimeChoice);
         List<TaxRegimeWithFeaturesAndCategoryDto> taxRegimeDtoList = new ArrayList<>();
         for (TaxRegimeWithFeaturesAndCategory taxRegime : taxRegimes) {

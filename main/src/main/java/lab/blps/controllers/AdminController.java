@@ -10,6 +10,7 @@ import lab.blps.main.dto.TaxRegimeDeleteRequestDto;
 import lab.blps.main.dto.TaxRegimeUpdateRequestDto;
 import lab.blps.main.dto.TaxRegimeWithFeaturesAndCategoryDto;
 import lab.blps.main.services.CrudTaxRegimeService;
+import lab.blps.main.services.KafkaService;
 import lab.blps.main.services.entities.TaxRegimeCreateRequest;
 import lab.blps.main.services.entities.TaxRegimeUpdateRequest;
 import lab.blps.main.services.entities.TaxRegimeWithFeaturesAndCategory;
@@ -17,7 +18,6 @@ import lab.blps.main.services.entities.map.MapTaxRegimeCreateRequest;
 import lab.blps.main.services.entities.map.MapTaxRegimeUpdateRequest;
 import lab.blps.main.services.entities.map.MapTaxRegimeWithFeaturesAndCategory;
 import lab.blps.security.dto.request.AddAmountRequestDto;
-import lab.blps.security.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,16 +31,13 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/admin")
 public class AdminController {
-    private final UserService userService;
     private final CrudTaxRegimeService crudTaxRegimeService;
+    private final KafkaService kafkaService;
 
     @PostMapping("/amount-request/add")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> addAmountRequest(@Valid @RequestBody AddAmountRequestDto addAmountRequestDto) {
-        userService.addAmountRequest(
-            addAmountRequestDto.getUserId(),
-            addAmountRequestDto.getAmountRequest()
-        );
+        kafkaService.sendMessage(addAmountRequestDto);
         return ResponseEntity.ok(new MessageResponseDto("Пользователю успешно добавлено количество запросов!"));
     }
 

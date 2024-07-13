@@ -1,6 +1,7 @@
 package lab.blps.security.bd.entities;
 
 import jakarta.persistence.*;
+import lab.blps.security.bd.entities.user.User;
 import lombok.Data;
 
 import java.time.Instant;

@@ -1,11 +1,13 @@
 package lab.blps.dto;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class ErrorMessageDto {
+public class ErrorMessageDto extends Dto {
     private int statusCode;
     private Date timestamp;
     private String message;

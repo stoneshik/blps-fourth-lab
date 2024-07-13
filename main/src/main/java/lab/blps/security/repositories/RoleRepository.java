@@ -1,9 +1,10 @@
 package lab.blps.security.repositories;
 
-import lab.blps.security.bd.entities.Role;
-import lab.blps.security.bd.entities.RoleEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import lab.blps.security.bd.entities.user.Role;
+import lab.blps.security.bd.entities.user.RoleEnum;
 
 import java.util.Optional;
 
