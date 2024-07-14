@@ -1,6 +1,7 @@
 package lab.blps.components;
 
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -29,6 +30,12 @@ public class KafkaConsumerListener {
             addAmountRequestDto.getUserId(),
             addAmountRequestDto.getAmountRequest()
         );
+	}
+
+	@Scheduled(cron = "0 0 0 * * *")
+	public void scheduleDailyAddingAmount() {
+		final Integer AMOUNT_ADDING_REQUESTS = 10;
+		userService.addAllUserAmountRequest(AMOUNT_ADDING_REQUESTS);
 	}
 
 	private String writeValueAsString(AddAmountRequestDto addAmountRequestDto) {
