@@ -1,7 +1,7 @@
-package lab.blps.security.services;
+package lab.blps.services;
 
-import lab.blps.security.bd.entities.user.User;
-import lab.blps.security.repositories.UserRepository;
+import lab.blps.bd.entites.user.*;
+import lab.blps.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;

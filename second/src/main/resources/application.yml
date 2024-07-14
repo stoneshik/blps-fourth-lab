@@ -15,7 +15,7 @@ spring:
   kafka:
     auto-offset-reset: latest
     bootstrap-servers: localhost:9092
-    group-id: choice-group
+    group-id: consumer-group
     topic:
       name: test-topic
 server:

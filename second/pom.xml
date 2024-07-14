@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>lab</groupId>
-    <artifactId>blps</artifactId>
+    <artifactId>second</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>choice</name>
+    <name>second</name>
     <description>choice</description>
     <properties>
         <java.version>17</java.version>

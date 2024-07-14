@@ -19,7 +19,7 @@ public class KafkaConsumerListener {
 	private final ObjectMapper objectMapper;
 
 	@KafkaListener(
-		topics = "{spring.kafka.topic.name}",
+		topics = "${spring.kafka.topic.name}",
 		groupId = "${spring.kafka.group-id}",
 		containerFactory = "singleFactory"
 	)

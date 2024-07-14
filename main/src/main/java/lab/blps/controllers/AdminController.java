@@ -94,7 +94,7 @@ public class AdminController {
     private void checkTaxRegimeId(Long id) {
         if (crudTaxRegimeService.getById(id) == null) {
             throw new EntityNotFoundException(
-                String.format("Ошибка: Налоговй режим id %s не найден", id)
+                String.format("Ошибка: Налоговый режим id %s не найден", id)
             );
         }
     }

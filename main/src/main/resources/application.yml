@@ -14,6 +14,7 @@ spring:
       ddl-auto: update
   kafka:
     bootstrap-servers: localhost:9092
+    group-id: producer-group
     producer:
       topic: test-topic
 server:
