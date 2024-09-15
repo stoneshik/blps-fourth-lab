@@ -1,0 +1,33 @@
+{
+  "components": [
+    {
+      "text": "# Показать все налоговые режимы",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0qg8oxj",
+        "columns": null
+      },
+      "id": "Field_0t794qq"
+    },
+    {
+      "action": "submit",
+      "label": "Отправить",
+      "type": "button",
+      "layout": {
+        "row": "Row_0807rbc",
+        "columns": null
+      },
+      "id": "Field_1yuatgf"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1ihey0c",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

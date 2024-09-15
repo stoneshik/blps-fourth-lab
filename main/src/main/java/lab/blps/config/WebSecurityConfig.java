@@ -1,8 +1,5 @@
 package lab.blps.config;
 
-import lab.blps.security.jwt.AuthEntryPointJwt;
-import lab.blps.security.jwt.AuthTokenFilter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +12,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import lab.blps.security.jwt.AuthEntryPointJwt;
+import lab.blps.security.jwt.AuthTokenFilter;
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @ComponentScan
@@ -48,12 +48,8 @@ public class WebSecurityConfig {
             .exceptionHandling((exception)-> exception.authenticationEntryPoint(unauthorizedHandler))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/sign-in").permitAll()
-                .requestMatchers("/api/auth/sign-up**").permitAll()
-                .requestMatchers("/api/auth/logout").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
             );
-        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 }

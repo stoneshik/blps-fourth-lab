@@ -1,0 +1,121 @@
+{
+  "components": [
+    {
+      "text": "# Выбор режима налогоблажения",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1g3umrm",
+        "columns": null
+      },
+      "id": "Field_03xs7ds"
+    },
+    {
+      "values": [
+        {
+          "label": "Индивидуальный предприниматель",
+          "value": "INDIVIDUAL_ENTREPRENEUR"
+        },
+        {
+          "label": "Юридическое лицо",
+          "value": "LEGAL_ENTITY"
+        },
+        {
+          "label": "Физическое лицо, не являющееся индивидуальным предпринимателем",
+          "value": "INDIVIDUAL"
+        }
+      ],
+      "label": "Категория налогоплательщика",
+      "type": "checklist",
+      "layout": {
+        "row": "Row_0akn6q0",
+        "columns": null
+      },
+      "id": "Field_1f6exqa",
+      "key": "taxpayerCategories"
+    },
+    {
+      "values": [
+        {
+          "label": "Производство подакцизных товаров",
+          "value": "PRODUCTION_EXCISABLE_GOODS"
+        },
+        {
+          "label": "Нет необходимости ведения налогового учета",
+          "value": "NO_NEED_KEEP_TAX_RECORDS"
+        },
+        {
+          "label": "Нет обязанности предоставлять декларации",
+          "value": "NO_OBLIGATION_SUBMIT_DECLARATIONS"
+        }
+      ],
+      "label": "Особенности",
+      "type": "checklist",
+      "layout": {
+        "row": "Row_03gikff",
+        "columns": null
+      },
+      "id": "Field_00pggzm",
+      "key": "taxFeatures"
+    },
+    {
+      "label": "Размер годового дохода",
+      "type": "number",
+      "layout": {
+        "row": "Row_0vom52o",
+        "columns": null
+      },
+      "id": "Field_0595i7g",
+      "key": "maxAnnualIncomeThousands",
+      "validate": {
+        "min": 0
+      }
+    },
+    {
+      "label": "Количество наемных сотрудников",
+      "type": "number",
+      "layout": {
+        "row": "Row_154m8tr",
+        "columns": null
+      },
+      "id": "Field_07qnrkw",
+      "key": "maxNumberEmployees",
+      "validate": {
+        "min": 0
+      }
+    },
+    {
+      "label": "Id пользователя",
+      "type": "number",
+      "layout": {
+        "row": "Row_1owivpa",
+        "columns": null
+      },
+      "id": "Field_17oorb8",
+      "key": "userId",
+      "validate": {
+        "required": true,
+        "min": 0
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Отправить",
+      "type": "button",
+      "layout": {
+        "row": "Row_1jmeh6h",
+        "columns": null
+      },
+      "id": "Field_1du6zyd"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1j7i4db",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

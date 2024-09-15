@@ -1,0 +1,47 @@
+{
+  "components": [
+    {
+      "text": "# Получить количество доступных пользователю запросов",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1xjw4xl",
+        "columns": null
+      },
+      "id": "Field_1vwn74k"
+    },
+    {
+      "label": "Id пользователя",
+      "type": "number",
+      "layout": {
+        "row": "Row_1fr8k0n",
+        "columns": null
+      },
+      "id": "Field_0g763th",
+      "key": "userId",
+      "validate": {
+        "required": true,
+        "min": 0
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Отправить",
+      "type": "button",
+      "layout": {
+        "row": "Row_1xku5w9",
+        "columns": null
+      },
+      "id": "Field_1isecwg"
+    }
+  ],
+  "type": "default",
+  "id": "Form_0f523aq",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

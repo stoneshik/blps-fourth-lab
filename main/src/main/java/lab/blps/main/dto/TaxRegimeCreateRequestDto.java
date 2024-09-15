@@ -27,4 +27,22 @@ public class TaxRegimeCreateRequestDto {
     @Min(value = 0L)
     @JsonProperty("maxNumberEmployees")
     private Long maxNumberEmployees;
+
+    public TaxRegimeCreateRequestDto() {}
+
+    public TaxRegimeCreateRequestDto(
+            List<String> taxpayerCategories,
+            List<String> taxFeatures,
+            String title,
+            String description,
+            Long maxAnnualIncomeThousands,
+            Long maxNumberEmployees
+    ) {
+        this.taxpayerCategories = taxpayerCategories;
+        this.taxFeatures = taxFeatures;
+        this.title = title;
+        this.description = description;
+        this.maxAnnualIncomeThousands = maxAnnualIncomeThousands;
+        this.maxNumberEmployees = maxNumberEmployees;
+    }
 }

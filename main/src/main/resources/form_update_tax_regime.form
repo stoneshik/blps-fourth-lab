@@ -1,0 +1,141 @@
+{
+  "components": [
+    {
+      "text": "# Обновление налогового режима",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_0jjmb2t",
+        "columns": null
+      },
+      "id": "Field_1uqrqaj"
+    },
+    {
+      "label": "Id налогового режима",
+      "type": "number",
+      "layout": {
+        "row": "Row_12196jd",
+        "columns": null
+      },
+      "id": "Field_1c0qa66",
+      "key": "id",
+      "validate": {
+        "required": true,
+        "min": 0
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Индивидуальный предприниматель",
+          "value": "NDIVIDUAL_ENTREPRENEUR"
+        },
+        {
+          "label": "Юридическое лицо",
+          "value": "LEGAL_ENTITY"
+        },
+        {
+          "label": "Физическое лицо, не являющееся индивидуальным предпринимателем",
+          "value": "INDIVIDUAL"
+        }
+      ],
+      "label": "Категория налогоплательщика",
+      "type": "checklist",
+      "layout": {
+        "row": "Row_170pc7g",
+        "columns": null
+      },
+      "id": "Field_160ubgt",
+      "key": "taxpayerCategories"
+    },
+    {
+      "values": [
+        {
+          "label": "Производство подакцизных товаров",
+          "value": "PRODUCTION_EXCISABLE_GOODS"
+        },
+        {
+          "label": "Нет необходимости ведения налогового учета",
+          "value": "NO_NEED_KEEP_TAX_RECORDS"
+        },
+        {
+          "label": "Нет обязанности предоставлять декларации",
+          "value": "NO_OBLIGATION_SUBMIT_DECLARATIONS"
+        }
+      ],
+      "label": "Особенности",
+      "type": "checklist",
+      "layout": {
+        "row": "Row_05izktp",
+        "columns": null
+      },
+      "id": "Field_1aii9j3",
+      "key": "taxFeatures"
+    },
+    {
+      "label": "Заголовок",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_00jfq25",
+        "columns": null
+      },
+      "id": "Field_114jwoc",
+      "key": "title"
+    },
+    {
+      "label": "Описание",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0gzhxpo",
+        "columns": null
+      },
+      "id": "Field_12bcsv2",
+      "key": "description"
+    },
+    {
+      "label": "Размер годового дохода",
+      "type": "number",
+      "layout": {
+        "row": "Row_1o3c156",
+        "columns": null
+      },
+      "id": "Field_0khy0ql",
+      "key": "maxAnnualIncomeThousands",
+      "validate": {
+        "min": 0
+      }
+    },
+    {
+      "label": "Количество наемных сотрудников",
+      "type": "number",
+      "layout": {
+        "row": "Row_0at9uyy",
+        "columns": null
+      },
+      "id": "Field_00tsuxu",
+      "key": "maxNumberEmployees",
+      "validate": {
+        "min": 0
+      }
+    },
+    {
+      "action": "submit",
+      "label": "Отправить",
+      "type": "button",
+      "layout": {
+        "row": "Row_13djree",
+        "columns": null
+      },
+      "id": "Field_1idwzr9"
+    }
+  ],
+  "type": "default",
+  "id": "Form_1jfy8zj",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

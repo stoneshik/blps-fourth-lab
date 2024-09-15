@@ -17,12 +17,26 @@ spring:
     group-id: producer-group
     producer:
       topic: test-topic
+
 server:
   port: 8080
+
 secret:
   key: ${SECRET_KEY}
+
 token:
   expire_time: ${TOKEN_EXPIRE_TIME}
   refresh_time: ${TOKEN_REFRESH_TIME}
+
 cors:
   urls: "*"
+
+camunda.bpm:
+  admin-user:
+    id: admin
+    password: admin
+  generic-properties:
+    properties:
+      historyTimeToLive: P1D
+
+request-fee: 1

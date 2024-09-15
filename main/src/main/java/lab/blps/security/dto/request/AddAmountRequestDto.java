@@ -12,4 +12,11 @@ public class AddAmountRequestDto extends Dto {
     private Long userId;
     @Min(0)
     private Integer amountRequest;
+
+    public AddAmountRequestDto() {}
+
+    public AddAmountRequestDto(Long userId, Integer amountRequest) {
+        this.userId = userId;
+        this.amountRequest = amountRequest;
+    }
 }
