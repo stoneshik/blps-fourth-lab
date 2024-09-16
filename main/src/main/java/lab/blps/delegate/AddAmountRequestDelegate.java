@@ -21,7 +21,7 @@ public class AddAmountRequestDelegate implements JavaDelegate {
     }
 
     private AddAmountRequestDto createAddAmountRequestDto(DelegateExecution delegateExecution) {
-        Long userId = (Long) delegateExecution.getVariable("userId");
+        Long userId = ((Number) delegateExecution.getVariable("userId")).longValue();
         Integer amountRequest = (Integer) delegateExecution.getVariable("amountRequest");
         return new AddAmountRequestDto(
             userId,

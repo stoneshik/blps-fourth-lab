@@ -9,12 +9,12 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class GetAmountRequestAmountDelegate implements JavaDelegate {
+public class GetAmountRequestDelegate implements JavaDelegate {
     private final UserService userService;
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-        Long userId = (Long) delegateExecution.getVariable("userId");
+        Long userId = ((Number) delegateExecution.getVariable("userId")).longValue();
         Integer amountRequest = userService.loadAmountRequest(userId);
         delegateExecution.setVariable("response", amountRequest);
     }

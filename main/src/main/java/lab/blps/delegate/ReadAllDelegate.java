@@ -7,6 +7,8 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lab.blps.main.dto.TaxRegimeWithFeaturesAndCategoryDto;
 import lab.blps.main.services.CrudTaxRegimeService;
 import lab.blps.main.services.entities.TaxRegimeWithFeaturesAndCategory;
@@ -17,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ReadAllDelegate implements JavaDelegate {
     private final CrudTaxRegimeService crudTaxRegimeService;
+    private final ObjectMapper objectMapper;
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
@@ -25,6 +28,7 @@ public class ReadAllDelegate implements JavaDelegate {
         for (TaxRegimeWithFeaturesAndCategory taxRegime : taxRegimes) {
             taxRegimeDtoList.add(MapTaxRegimeWithFeaturesAndCategory.mapToDto(taxRegime));
         }
-        delegateExecution.setVariable("response", taxRegimeDtoList);
+        String responseString = objectMapper.writeValueAsString(taxRegimeDtoList);
+        delegateExecution.setVariable("response", (Object) responseString);
     }
 }

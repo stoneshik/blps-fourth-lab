@@ -1,14 +1,14 @@
 {
   "components": [
     {
-      "text": "# Выбор режима налогоблажения",
+      "text": "# Добавление нового налогового режима",
       "label": "Text view",
       "type": "text",
       "layout": {
-        "row": "Row_1g3umrm",
+        "row": "Row_0zcsdte",
         "columns": null
       },
-      "id": "Field_03xs7ds"
+      "id": "Field_0dj6z85"
     },
     {
       "values": [
@@ -28,10 +28,10 @@
       "label": "Категория налогоплательщика",
       "type": "checklist",
       "layout": {
-        "row": "Row_0akn6q0",
+        "row": "Row_1r6eq4e",
         "columns": null
       },
-      "id": "Field_1f6exqa",
+      "id": "Field_0rjqnmg",
       "key": "taxpayerCategories"
     },
     {
@@ -52,70 +52,76 @@
       "label": "Особенности",
       "type": "checklist",
       "layout": {
-        "row": "Row_03gikff",
+        "row": "Row_0ahn1f8",
         "columns": null
       },
-      "id": "Field_00pggzm",
+      "id": "Field_1rrfeui",
       "key": "taxFeatures"
+    },
+    {
+      "label": "Заголовок",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_00uz7v1",
+        "columns": null
+      },
+      "id": "Field_13r0ku4",
+      "key": "title",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Описание",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0rhl2b6",
+        "columns": null
+      },
+      "id": "Field_03umsxc",
+      "key": "description",
+      "validate": {
+        "required": true
+      }
     },
     {
       "label": "Размер годового дохода",
       "type": "number",
       "layout": {
-        "row": "Row_0vom52o",
+        "row": "Row_1ny1hg0",
         "columns": null
       },
-      "id": "Field_0595i7g",
-      "key": "maxAnnualIncomeThousands",
-      "validate": {
-        "min": 0
-      }
+      "id": "Field_0s04q9a",
+      "key": "maxAnnualIncomeThousands"
     },
     {
       "label": "Количество наемных сотрудников",
       "type": "number",
       "layout": {
-        "row": "Row_154m8tr",
+        "row": "Row_1l773pm",
         "columns": null
       },
-      "id": "Field_07qnrkw",
-      "key": "maxNumberEmployees",
-      "validate": {
-        "min": 0
-      }
-    },
-    {
-      "label": "Id пользователя",
-      "type": "number",
-      "layout": {
-        "row": "Row_1owivpa",
-        "columns": null
-      },
-      "id": "Field_17oorb8",
-      "key": "userId",
-      "validate": {
-        "required": true,
-        "min": 0
-      }
+      "id": "Field_1g0wezy",
+      "key": "maxNumberEmployees"
     },
     {
       "action": "submit",
       "label": "Отправить",
       "type": "button",
       "layout": {
-        "row": "Row_1jmeh6h",
+        "row": "Row_02fcscc",
         "columns": null
       },
-      "id": "Field_1du6zyd"
+      "id": "Field_1imequ8"
     }
   ],
   "type": "default",
-  "id": "Form_1j7i4db",
+  "id": "Form_0emrzlk",
   "exporter": {
     "name": "Camunda Modeler",
     "version": "5.27.0"
   },
   "executionPlatform": "Camunda Platform",
-  "executionPlatformVersion": "7.21.0",
+  "executionPlatformVersion": "7.22.0",
   "schemaVersion": 16
 }

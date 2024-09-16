@@ -35,7 +35,7 @@ public class UpdateTaxRegimeDelegate implements JavaDelegate {
     }
 
     private TaxRegimeUpdateRequestDto createTaxRegimeUpdateRequestDto(DelegateExecution delegateExecution) {
-        Long taxRegimeId = (Long) delegateExecution.getVariable("id");
+        Long taxRegimeId = ((Number) delegateExecution.getVariable("id")).longValue();
         List<String> taxpayerCategoriesStrings = Arrays.asList(delegateExecution.getVariable("taxpayerCategories"))
             .stream()
             .map((object) -> Objects.toString(object, null))
@@ -46,8 +46,8 @@ public class UpdateTaxRegimeDelegate implements JavaDelegate {
             .toList();
         String title = (String) delegateExecution.getVariable("title");
         String description = (String) delegateExecution.getVariable("description");
-        Long maxAnnualIncomeThousands = (Long) delegateExecution.getVariable("maxAnnualIncomeThousands");
-        Long maxNumberEmployees = (Long) delegateExecution.getVariable("maxNumberEmployees");
+        Long maxAnnualIncomeThousands = ((Number) delegateExecution.getVariable("maxAnnualIncomeThousands")).longValue();
+        Long maxNumberEmployees = ((Number) delegateExecution.getVariable("maxNumberEmployees")).longValue();
         return new TaxRegimeUpdateRequestDto(
             taxRegimeId,
             taxpayerCategoriesStrings,

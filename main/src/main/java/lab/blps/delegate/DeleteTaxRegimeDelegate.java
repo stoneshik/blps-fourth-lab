@@ -15,7 +15,7 @@ public class DeleteTaxRegimeDelegate implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-        Long taxRegimeId = (Long) delegateExecution.getVariable("id");
+        Long taxRegimeId = ((Number) delegateExecution.getVariable("id")).longValue();
         checkTaxRegimeId(taxRegimeId);
         crudTaxRegimeService.delete(taxRegimeId);
         delegateExecution.setVariable("response", "Информация о налоговом режиме успешно удалена!");

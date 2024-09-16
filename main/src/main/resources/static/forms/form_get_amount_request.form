@@ -1,24 +1,24 @@
 {
   "components": [
     {
-      "text": "# Удаление налогового режима",
+      "text": "# Получить количество доступных пользователю запросов",
       "label": "Text view",
       "type": "text",
       "layout": {
-        "row": "Row_0iv1ura",
+        "row": "Row_1xjw4xl",
         "columns": null
       },
-      "id": "Field_11szwr9"
+      "id": "Field_1vwn74k"
     },
     {
-      "label": "Id налогового режима",
+      "label": "Id пользователя",
       "type": "number",
       "layout": {
-        "row": "Row_0ppaidq",
+        "row": "Row_1fr8k0n",
         "columns": null
       },
-      "id": "Field_0rcjir5",
-      "key": "id",
+      "id": "Field_0g763th",
+      "key": "userId",
       "validate": {
         "required": true,
         "min": 0
@@ -29,19 +29,19 @@
       "label": "Отправить",
       "type": "button",
       "layout": {
-        "row": "Row_113ruxq",
+        "row": "Row_1xku5w9",
         "columns": null
       },
-      "id": "Field_0q43kci"
+      "id": "Field_1isecwg"
     }
   ],
   "type": "default",
-  "id": "Form_0do5n11",
+  "id": "Form_0f523aq",
   "exporter": {
     "name": "Camunda Modeler",
     "version": "5.27.0"
   },
   "executionPlatform": "Camunda Platform",
-  "executionPlatformVersion": "7.21.0",
+  "executionPlatformVersion": "7.22.0",
   "schemaVersion": 16
 }

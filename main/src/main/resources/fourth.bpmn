@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_16frn5t" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_16frn5t" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.22.0">
   <bpmn:collaboration id="Collaboration_0k0m9ds">
-    <bpmn:participant id="Participant_11h4n5j" name="Запрос на подбор налогового режима (обычный пользователь)" processRef="Process_1171338" />
-    <bpmn:participant id="Participant_0ezzgnm" name="Получекние количества запросов (обычный пользователь)" processRef="Process_1njjli4" />
-    <bpmn:participant id="Participant_0rd6izu" name="Создание нового налогового режима (администратор)" processRef="Process_1e5k5tg" />
-    <bpmn:participant id="Participant_0ln87ff" name="Показать все налоговые режимы (администратор)" processRef="Process_0e6qr8e" />
-    <bpmn:participant id="Participant_0bld53m" name="Обновить налоговый режим (администратор)" processRef="Process_1jfhoxc" />
-    <bpmn:participant id="Participant_0byvm39" name="Удалить налоговый режим (администратор)" processRef="Process_1yxeph1" />
-    <bpmn:participant id="Participant_0th0wva" name="Добавить пользователю запросы (администратор)" processRef="Process_0653h4m" />
+    <bpmn:participant id="Participant_11h4n5j" name="Запрос на подбор налогового режима (обычный пользователь)" processRef="TaxRegimeChoice" />
+    <bpmn:participant id="Participant_0ezzgnm" name="Получение количества запросов (обычный пользователь)" processRef="GetAmountRequest" />
+    <bpmn:participant id="Participant_0rd6izu" name="Создание нового налогового режима (администратор)" processRef="CreateTaxRegime" />
+    <bpmn:participant id="Participant_0ln87ff" name="Показать все налоговые режимы (администратор)" processRef="ReadAll" />
+    <bpmn:participant id="Participant_0bld53m" name="Обновить налоговый режим (администратор)" processRef="UpdateTaxRegime" />
+    <bpmn:participant id="Participant_0byvm39" name="Удалить налоговый режим (администратор)" processRef="DeleteTaxRegime" />
+    <bpmn:participant id="Participant_0th0wva" name="Добавить пользователю запросы (администратор)" processRef="AddAmountRequest" />
   </bpmn:collaboration>
-  <bpmn:process id="Process_1171338" isExecutable="true">
+  <bpmn:process id="TaxRegimeChoice" name="TaxRegimeChoice" isExecutable="true">
     <bpmn:laneSet id="LaneSet_0dy5061" />
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0nadxqy</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="Activity_1cc1ivj" name="Заполнение формы" camunda:formRef="form_choice_tax_regime" camunda:formRefBinding="deployment">
+    <bpmn:userTask id="Activity_1cc1ivj" name="Заполнение формы" camunda:formKey="camunda-forms:/forms/form_choice_tax_regime.form">
       <bpmn:extensionElements />
       <bpmn:incoming>Flow_0nadxqy</bpmn:incoming>
       <bpmn:outgoing>Flow_1fc3axq</bpmn:outgoing>
@@ -43,7 +43,7 @@
     <bpmn:sequenceFlow id="Flow_1uxk7uc" sourceRef="Activity_0c3kjqk" targetRef="Event_0toxcxa" />
     <bpmn:sequenceFlow id="Flow_0e5nr9o" sourceRef="Event_04d8cnp" targetRef="Event_1kklx3w" />
   </bpmn:process>
-  <bpmn:process id="Process_1njjli4" isExecutable="false">
+  <bpmn:process id="GetAmountRequest" name="GetAmountRequest" isExecutable="true">
     <bpmn:startEvent id="Event_0bvn9a8">
       <bpmn:outgoing>Flow_05v53t5</bpmn:outgoing>
     </bpmn:startEvent>
@@ -54,20 +54,20 @@
       <bpmn:incoming>Flow_16kr4l1</bpmn:incoming>
       <bpmn:outgoing>Flow_00blj92</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Activity_18b4qq1" name="Заполнение формы" camunda:formRef="form_get_amount_request" camunda:formRefBinding="deployment">
-      <bpmn:incoming>Flow_05v53t5</bpmn:incoming>
-      <bpmn:outgoing>Flow_16kr4l1</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_05v53t5" sourceRef="Event_0bvn9a8" targetRef="Activity_18b4qq1" />
     <bpmn:sequenceFlow id="Flow_00blj92" sourceRef="Activity_0657kgv" targetRef="Event_14kabev" />
     <bpmn:sequenceFlow id="Flow_16kr4l1" sourceRef="Activity_18b4qq1" targetRef="Activity_0657kgv" />
+    <bpmn:userTask id="Activity_18b4qq1" name="Заполнение формы" camunda:formKey="camunda-forms:/forms/form_get_amount_request.form">
+      <bpmn:incoming>Flow_05v53t5</bpmn:incoming>
+      <bpmn:outgoing>Flow_16kr4l1</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmn:error id="Error_13lr1cw" name="notEnoughAmountRequest" errorCode="notEnoughAmountRequest" camunda:errorMessage="Ошибка: Недостаточно запросов на счете" />
-  <bpmn:process id="Process_1e5k5tg" isExecutable="false">
+  <bpmn:process id="CreateTaxRegime" name="CreateTaxRegime" isExecutable="true">
     <bpmn:startEvent id="Event_1458s86">
       <bpmn:outgoing>Flow_0n2nlsc</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="Activity_0i15rjk" name="Заполнение формы" camunda:formRef="form_create_tax_regime" camunda:formRefBinding="deployment">
+    <bpmn:userTask id="Activity_0i15rjk" name="Заполнение формы" camunda:formKey="camunda-forms:/forms/form_create_tax_regime.form">
       <bpmn:incoming>Flow_0n2nlsc</bpmn:incoming>
       <bpmn:outgoing>Flow_1ug4a7m</bpmn:outgoing>
     </bpmn:userTask>
@@ -90,11 +90,11 @@
     <bpmn:sequenceFlow id="Flow_0asbjcg" sourceRef="Activity_15js370" targetRef="Event_0udz2fw" />
     <bpmn:sequenceFlow id="Flow_1rm5iwu" sourceRef="Event_0a3b2hy" targetRef="Event_1c8pl8z" />
   </bpmn:process>
-  <bpmn:process id="Process_0e6qr8e" isExecutable="false">
+  <bpmn:process id="ReadAll" name="ReadAll" isExecutable="true">
     <bpmn:startEvent id="Event_17lx18m">
       <bpmn:outgoing>Flow_19usodb</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="Activity_1az0r0o" name="Заполнение формы" camunda:formRef="form_read_all" camunda:formRefBinding="deployment">
+    <bpmn:userTask id="Activity_1az0r0o" name="Заполнение формы" camunda:formKey="camunda-forms:/forms/form_read_all.form">
       <bpmn:incoming>Flow_19usodb</bpmn:incoming>
       <bpmn:outgoing>Flow_0vivkdw</bpmn:outgoing>
     </bpmn:userTask>
@@ -109,11 +109,11 @@
     <bpmn:sequenceFlow id="Flow_0vivkdw" sourceRef="Activity_1az0r0o" targetRef="Activity_12b3hw2" />
     <bpmn:sequenceFlow id="Flow_1poyvr1" sourceRef="Activity_12b3hw2" targetRef="Event_0psqzaz" />
   </bpmn:process>
-  <bpmn:process id="Process_1jfhoxc" isExecutable="false">
+  <bpmn:process id="UpdateTaxRegime" name="UpdateTaxRegime" isExecutable="true">
     <bpmn:startEvent id="Event_1ynlon4">
       <bpmn:outgoing>Flow_1bhq1cy</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="Activity_19damiw" name="Заполнение формы" camunda:formRef="form_update_tax_regime" camunda:formRefBinding="deployment">
+    <bpmn:userTask id="Activity_19damiw" name="Заполнение формы" camunda:formKey="camunda-forms:/forms/form_update_tax_regime.form">
       <bpmn:incoming>Flow_1bhq1cy</bpmn:incoming>
       <bpmn:outgoing>Flow_1wvtr5f</bpmn:outgoing>
     </bpmn:userTask>
@@ -136,11 +136,11 @@
     <bpmn:sequenceFlow id="Flow_1rh6hqo" sourceRef="Activity_1t56dwq" targetRef="Event_18co34k" />
     <bpmn:sequenceFlow id="Flow_10bh9iz" sourceRef="Event_0lnkxzj" targetRef="Event_11tuqsq" />
   </bpmn:process>
-  <bpmn:process id="Process_1yxeph1" isExecutable="false">
+  <bpmn:process id="DeleteTaxRegime" name="DeleteTaxRegime" isExecutable="true">
     <bpmn:startEvent id="Event_0e2n347">
       <bpmn:outgoing>Flow_1x1gogm</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="Activity_1d8az7c" name="Заполнение формы" camunda:formRef="form_delete_tax_regime" camunda:formRefBinding="deployment">
+    <bpmn:userTask id="Activity_1d8az7c" name="Заполнение формы" camunda:formKey="camunda-forms:/forms/form_delete_tax_regime.form">
       <bpmn:incoming>Flow_1x1gogm</bpmn:incoming>
       <bpmn:outgoing>Flow_0wema1t</bpmn:outgoing>
     </bpmn:userTask>
@@ -163,11 +163,11 @@
     <bpmn:sequenceFlow id="Flow_02a2dqw" sourceRef="Activity_13e7ogt" targetRef="Event_01p2l5s" />
     <bpmn:sequenceFlow id="Flow_1mwjoph" sourceRef="Event_0bs6xzw" targetRef="Event_1wbrbjo" />
   </bpmn:process>
-  <bpmn:process id="Process_0653h4m" isExecutable="false">
+  <bpmn:process id="AddAmountRequest" name="AddAmountRequest" isExecutable="true">
     <bpmn:startEvent id="Event_0jx0zmy">
       <bpmn:outgoing>Flow_0re95qa</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="Activity_1wuflsn" name="Заполнение формы" camunda:formRef="form_add_amount_request" camunda:formRefBinding="deployment">
+    <bpmn:userTask id="Activity_1wuflsn" name="Заполнение формы" camunda:formKey="camunda-forms:/forms/form_add_amount_request.form">
       <bpmn:incoming>Flow_0re95qa</bpmn:incoming>
       <bpmn:outgoing>Flow_1qgfp6z</bpmn:outgoing>
     </bpmn:userTask>
@@ -252,19 +252,19 @@
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_18b4qq1_di" bpmnElement="Activity_18b4qq1">
-        <dc:Bounds x="260" y="170" width="100" height="80" />
+        <dc:Bounds x="270" y="170" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_05v53t5_di" bpmnElement="Flow_05v53t5">
         <di:waypoint x="218" y="210" />
-        <di:waypoint x="260" y="210" />
+        <di:waypoint x="270" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_00blj92_di" bpmnElement="Flow_00blj92">
         <di:waypoint x="510" y="210" />
         <di:waypoint x="572" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_16kr4l1_di" bpmnElement="Flow_16kr4l1">
-        <di:waypoint x="360" y="210" />
+        <di:waypoint x="370" y="210" />
         <di:waypoint x="410" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_0rd6izu_di" bpmnElement="Participant_0rd6izu" isHorizontal="true">

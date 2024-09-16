@@ -9,6 +9,8 @@ import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lab.blps.main.bd.entites.enums.TaxFeatureEnum;
 import lab.blps.main.bd.entites.enums.TaxpayerCategoryEnum;
 import lab.blps.main.dto.TaxRegimeWithFeaturesAndCategoryDto;
@@ -22,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FilterTaxRegimesDelegate implements JavaDelegate {
     private final ChoiceTaxRegimeService choiceTaxRegimeService;
+    private final ObjectMapper objectMapper;
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
@@ -35,7 +38,8 @@ public class FilterTaxRegimesDelegate implements JavaDelegate {
                 )
             );
         }
-        delegateExecution.setVariable("response", taxRegimeDtoList);
+        String responseString = objectMapper.writeValueAsString(taxRegimeDtoList);
+        delegateExecution.setVariable("response", responseString);
     }
 
     private TaxRegimeChoice createTaxRegimeChoice(DelegateExecution delegateExecution) {
@@ -55,8 +59,8 @@ public class FilterTaxRegimesDelegate implements JavaDelegate {
             .stream()
             .map(TaxFeatureEnum::valueOf)
             .toList();
-        Long maxAnnualIncomeThousands = (Long) delegateExecution.getVariable("maxAnnualIncomeThousands");
-        Long maxNumberEmployees = (Long) delegateExecution.getVariable("maxNumberEmployees");
+        Long maxAnnualIncomeThousands = ((Number) delegateExecution.getVariable("maxAnnualIncomeThousands")).longValue();
+        Long maxNumberEmployees = ((Number) delegateExecution.getVariable("maxNumberEmployees")).longValue();
         return new TaxRegimeChoice(
             taxpayerCategories,
             taxFeatures,

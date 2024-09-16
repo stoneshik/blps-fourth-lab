@@ -20,7 +20,7 @@ public class RequestFeeDelegate implements JavaDelegate {
 
     @Override
     public void execute(DelegateExecution delegateExecution) throws Exception {
-        Long userId = (Long) delegateExecution.getVariable("userId");
+        Long userId = ((Number) delegateExecution.getVariable("userId")).longValue();
         if (!userService.isAmountRequestEnough(userId)) {
             throw new BpmnError("notEnoughAmountRequest");
         }

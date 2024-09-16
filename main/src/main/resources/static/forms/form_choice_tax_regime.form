@@ -1,34 +1,20 @@
 {
   "components": [
     {
-      "text": "# Обновление налогового режима",
+      "text": "# Выбор режима налогоблажения",
       "label": "Text view",
       "type": "text",
       "layout": {
-        "row": "Row_0jjmb2t",
+        "row": "Row_1g3umrm",
         "columns": null
       },
-      "id": "Field_1uqrqaj"
-    },
-    {
-      "label": "Id налогового режима",
-      "type": "number",
-      "layout": {
-        "row": "Row_12196jd",
-        "columns": null
-      },
-      "id": "Field_1c0qa66",
-      "key": "id",
-      "validate": {
-        "required": true,
-        "min": 0
-      }
+      "id": "Field_03xs7ds"
     },
     {
       "values": [
         {
           "label": "Индивидуальный предприниматель",
-          "value": "NDIVIDUAL_ENTREPRENEUR"
+          "value": "INDIVIDUAL_ENTREPRENEUR"
         },
         {
           "label": "Юридическое лицо",
@@ -42,10 +28,10 @@
       "label": "Категория налогоплательщика",
       "type": "checklist",
       "layout": {
-        "row": "Row_170pc7g",
+        "row": "Row_0akn6q0",
         "columns": null
       },
-      "id": "Field_160ubgt",
+      "id": "Field_1f6exqa",
       "key": "taxpayerCategories"
     },
     {
@@ -66,40 +52,20 @@
       "label": "Особенности",
       "type": "checklist",
       "layout": {
-        "row": "Row_05izktp",
+        "row": "Row_03gikff",
         "columns": null
       },
-      "id": "Field_1aii9j3",
+      "id": "Field_00pggzm",
       "key": "taxFeatures"
-    },
-    {
-      "label": "Заголовок",
-      "type": "textfield",
-      "layout": {
-        "row": "Row_00jfq25",
-        "columns": null
-      },
-      "id": "Field_114jwoc",
-      "key": "title"
-    },
-    {
-      "label": "Описание",
-      "type": "textarea",
-      "layout": {
-        "row": "Row_0gzhxpo",
-        "columns": null
-      },
-      "id": "Field_12bcsv2",
-      "key": "description"
     },
     {
       "label": "Размер годового дохода",
       "type": "number",
       "layout": {
-        "row": "Row_1o3c156",
+        "row": "Row_0vom52o",
         "columns": null
       },
-      "id": "Field_0khy0ql",
+      "id": "Field_0595i7g",
       "key": "maxAnnualIncomeThousands",
       "validate": {
         "min": 0
@@ -109,12 +75,26 @@
       "label": "Количество наемных сотрудников",
       "type": "number",
       "layout": {
-        "row": "Row_0at9uyy",
+        "row": "Row_154m8tr",
         "columns": null
       },
-      "id": "Field_00tsuxu",
+      "id": "Field_07qnrkw",
       "key": "maxNumberEmployees",
       "validate": {
+        "min": 0
+      }
+    },
+    {
+      "label": "Id пользователя",
+      "type": "number",
+      "layout": {
+        "row": "Row_1owivpa",
+        "columns": null
+      },
+      "id": "Field_17oorb8",
+      "key": "userId",
+      "validate": {
+        "required": true,
         "min": 0
       }
     },
@@ -123,19 +103,19 @@
       "label": "Отправить",
       "type": "button",
       "layout": {
-        "row": "Row_13djree",
+        "row": "Row_1jmeh6h",
         "columns": null
       },
-      "id": "Field_1idwzr9"
+      "id": "Field_1du6zyd"
     }
   ],
   "type": "default",
-  "id": "Form_1jfy8zj",
+  "id": "Form_1j7i4db",
   "exporter": {
     "name": "Camunda Modeler",
     "version": "5.27.0"
   },
   "executionPlatform": "Camunda Platform",
-  "executionPlatformVersion": "7.21.0",
+  "executionPlatformVersion": "7.22.0",
   "schemaVersion": 16
 }

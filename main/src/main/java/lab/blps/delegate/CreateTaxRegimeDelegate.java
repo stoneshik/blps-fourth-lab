@@ -44,8 +44,8 @@ public class CreateTaxRegimeDelegate implements JavaDelegate {
             .toList();
         String title = (String) delegateExecution.getVariable("title");
         String description = (String) delegateExecution.getVariable("description");
-        Long maxAnnualIncomeThousands = (Long) delegateExecution.getVariable("maxAnnualIncomeThousands");
-        Long maxNumberEmployees = (Long) delegateExecution.getVariable("maxNumberEmployees");
+        Long maxAnnualIncomeThousands = ((Number) delegateExecution.getVariable("maxAnnualIncomeThousands")).longValue();
+        Long maxNumberEmployees = ((Number) delegateExecution.getVariable("maxNumberEmployees")).longValue();
         return new TaxRegimeCreateRequestDto(
             taxpayerCategoriesStrings,
             taxFeaturesStrings,
