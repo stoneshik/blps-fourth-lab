@@ -1,14 +1,15 @@
 package lab.blps.delegate;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import org.camunda.bpm.engine.delegate.BpmnError;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
 
+import lab.blps.main.bd.entites.enums.TaxFeatureEnum;
+import lab.blps.main.bd.entites.enums.TaxpayerCategoryEnum;
 import lab.blps.main.dto.TaxRegimeCreateRequestDto;
 import lab.blps.main.services.CrudTaxRegimeService;
 import lab.blps.main.services.entities.TaxRegimeCreateRequest;
@@ -34,18 +35,56 @@ public class CreateTaxRegimeDelegate implements JavaDelegate {
     }
 
     private TaxRegimeCreateRequestDto createTaxRegimeCreateRequestDto(DelegateExecution delegateExecution) {
-        List<String> taxpayerCategoriesStrings = Arrays.asList(delegateExecution.getVariable("taxpayerCategories"))
-            .stream()
-            .map((object) -> Objects.toString(object, null))
-            .toList();
-        List<String> taxFeaturesStrings = Arrays.asList(delegateExecution.getVariable("taxFeatures"))
-            .stream()
-            .map((obj) -> Objects.toString(obj, null))
-            .toList();
+        List<String> taxpayerCategoriesStrings = new ArrayList<>();
+        List<String> taxFeaturesStrings = new ArrayList<>();
+        boolean individualEntrepreneur = (boolean) delegateExecution.getVariable("individualEntrepreneur");
+        boolean legalEntity = (boolean) delegateExecution.getVariable("legalEntity");
+        boolean individual = (boolean) delegateExecution.getVariable("individual");
+        if (individualEntrepreneur) {
+            taxpayerCategoriesStrings.add(
+                TaxpayerCategoryEnum.INDIVIDUAL_ENTREPRENEUR.name()
+            );
+        }
+        if (legalEntity) {
+            taxpayerCategoriesStrings.add(
+                TaxpayerCategoryEnum.LEGAL_ENTITY.name()
+            );
+        }
+        if (individual) {
+            taxpayerCategoriesStrings.add(
+                TaxpayerCategoryEnum.INDIVIDUAL.name()
+            );
+        }
+        boolean productionExcisableGoods = (boolean) delegateExecution.getVariable("productionExcisableGoods");
+        boolean noNeedKeepTaxRecords = (boolean) delegateExecution.getVariable("noNeedKeepTaxRecords");
+        boolean noObligationSubmitDeclarations = (boolean) delegateExecution.getVariable("noObligationSubmitDeclarations");
+        if (productionExcisableGoods) {
+            taxFeaturesStrings.add(
+                TaxFeatureEnum.PRODUCTION_EXCISABLE_GOODS.name()
+            );
+        }
+        if (noNeedKeepTaxRecords) {
+            taxFeaturesStrings.add(
+                TaxFeatureEnum.NO_NEED_KEEP_TAX_RECORDS.name()
+            );
+        }
+        if (noObligationSubmitDeclarations) {
+            taxFeaturesStrings.add(
+                TaxFeatureEnum.NO_OBLIGATION_SUBMIT_DECLARATIONS.name()
+            );
+        }
         String title = (String) delegateExecution.getVariable("title");
         String description = (String) delegateExecution.getVariable("description");
-        Long maxAnnualIncomeThousands = ((Number) delegateExecution.getVariable("maxAnnualIncomeThousands")).longValue();
-        Long maxNumberEmployees = ((Number) delegateExecution.getVariable("maxNumberEmployees")).longValue();
+        Object maxAnnualIncomeThousandsRaw = delegateExecution.getVariable("maxAnnualIncomeThousands");
+        Object maxNumberEmployeesRaw = delegateExecution.getVariable("maxNumberEmployees");
+        Long maxAnnualIncomeThousands = null;
+        Long maxNumberEmployees = null;
+        if  (maxAnnualIncomeThousandsRaw != null) {
+            maxAnnualIncomeThousands = ((Number) maxAnnualIncomeThousandsRaw).longValue();
+        }
+        if  (maxNumberEmployeesRaw != null) {
+            maxNumberEmployees = ((Number) maxNumberEmployeesRaw).longValue();
+        }
         return new TaxRegimeCreateRequestDto(
             taxpayerCategoriesStrings,
             taxFeaturesStrings,

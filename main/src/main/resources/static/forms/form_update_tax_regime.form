@@ -25,52 +25,84 @@
       }
     },
     {
-      "values": [
-        {
-          "label": "Индивидуальный предприниматель",
-          "value": "NDIVIDUAL_ENTREPRENEUR"
-        },
-        {
-          "label": "Юридическое лицо",
-          "value": "LEGAL_ENTITY"
-        },
-        {
-          "label": "Физическое лицо, не являющееся индивидуальным предпринимателем",
-          "value": "INDIVIDUAL"
-        }
-      ],
-      "label": "Категория налогоплательщика",
-      "type": "checklist",
+      "text": "Категория налогоплательщика",
+      "label": "Text view",
+      "type": "text",
       "layout": {
-        "row": "Row_170pc7g",
+        "row": "Row_0hzvlny",
         "columns": null
       },
-      "id": "Field_160ubgt",
-      "key": "taxpayerCategories"
+      "id": "Field_15vj1pv"
     },
     {
-      "values": [
-        {
-          "label": "Производство подакцизных товаров",
-          "value": "PRODUCTION_EXCISABLE_GOODS"
-        },
-        {
-          "label": "Нет необходимости ведения налогового учета",
-          "value": "NO_NEED_KEEP_TAX_RECORDS"
-        },
-        {
-          "label": "Нет обязанности предоставлять декларации",
-          "value": "NO_OBLIGATION_SUBMIT_DECLARATIONS"
-        }
-      ],
-      "label": "Особенности",
-      "type": "checklist",
+      "label": "Индивидуальный предприниматель",
+      "type": "checkbox",
       "layout": {
-        "row": "Row_05izktp",
+        "row": "Row_0cp8fp6",
         "columns": null
       },
-      "id": "Field_1aii9j3",
-      "key": "taxFeatures"
+      "id": "Field_13s59y2",
+      "key": "individualEntrepreneur"
+    },
+    {
+      "label": "Юридическое лицо",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0gmgkej",
+        "columns": null
+      },
+      "id": "Field_04ww2i5",
+      "key": "legalEntity"
+    },
+    {
+      "label": "Физическое лицо, не являющееся индивидуальным предпринимателем",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_09jq40b",
+        "columns": null
+      },
+      "id": "Field_0xacc85",
+      "key": "individual"
+    },
+    {
+      "text": "Особенности",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_1enc9sv",
+        "columns": null
+      },
+      "id": "Field_1pmmkje"
+    },
+    {
+      "label": "Производство подакцизных товаров",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_156kc6i",
+        "columns": null
+      },
+      "id": "Field_0ahhmmo",
+      "key": "productionExcisableGoods"
+    },
+    {
+      "label": "Нет необходимости ведения налогового учета",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_01oby4q",
+        "columns": null
+      },
+      "id": "Field_1go4jaq",
+      "key": "noNeedKeepTaxRecords"
+    },
+    {
+      "label": "Нет обязанности предоставлять декларации",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0w70z28",
+        "columns": null
+      },
+      "id": "Field_1rv7udj",
+      "key": "noObligationSubmitDeclarations"
     },
     {
       "label": "Заголовок",

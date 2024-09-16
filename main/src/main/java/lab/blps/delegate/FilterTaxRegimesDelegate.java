@@ -1,9 +1,7 @@
 package lab.blps.delegate;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -43,24 +41,54 @@ public class FilterTaxRegimesDelegate implements JavaDelegate {
     }
 
     private TaxRegimeChoice createTaxRegimeChoice(DelegateExecution delegateExecution) {
-        List<String> taxpayerCategoriesStrings = Arrays.asList(delegateExecution.getVariable("taxpayerCategories"))
-            .stream()
-            .map((object) -> Objects.toString(object, null))
-            .toList();
-        List<String> taxFeaturesStrings = Arrays.asList(delegateExecution.getVariable("taxFeatures"))
-            .stream()
-            .map((obj) -> Objects.toString(obj, null))
-            .toList();
-        List<TaxpayerCategoryEnum> taxpayerCategories = taxpayerCategoriesStrings
-            .stream()
-            .map(TaxpayerCategoryEnum::valueOf)
-            .toList();
-        List<TaxFeatureEnum> taxFeatures = taxFeaturesStrings
-            .stream()
-            .map(TaxFeatureEnum::valueOf)
-            .toList();
-        Long maxAnnualIncomeThousands = ((Number) delegateExecution.getVariable("maxAnnualIncomeThousands")).longValue();
-        Long maxNumberEmployees = ((Number) delegateExecution.getVariable("maxNumberEmployees")).longValue();
+        List<TaxpayerCategoryEnum> taxpayerCategories = new ArrayList<>();
+        List<TaxFeatureEnum> taxFeatures = new ArrayList<>();
+        boolean individualEntrepreneur = (boolean) delegateExecution.getVariable("individualEntrepreneur");
+        boolean legalEntity = (boolean) delegateExecution.getVariable("legalEntity");
+        boolean individual = (boolean) delegateExecution.getVariable("individual");
+        if (individualEntrepreneur) {
+            taxpayerCategories.add(
+                TaxpayerCategoryEnum.INDIVIDUAL_ENTREPRENEUR
+            );
+        }
+        if (legalEntity) {
+            taxpayerCategories.add(
+                TaxpayerCategoryEnum.LEGAL_ENTITY
+            );
+        }
+        if (individual) {
+            taxpayerCategories.add(
+                TaxpayerCategoryEnum.INDIVIDUAL
+            );
+        }
+        boolean productionExcisableGoods = (boolean) delegateExecution.getVariable("productionExcisableGoods");
+        boolean noNeedKeepTaxRecords = (boolean) delegateExecution.getVariable("noNeedKeepTaxRecords");
+        boolean noObligationSubmitDeclarations = (boolean) delegateExecution.getVariable("noObligationSubmitDeclarations");
+        if (productionExcisableGoods) {
+            taxFeatures.add(
+                TaxFeatureEnum.PRODUCTION_EXCISABLE_GOODS
+            );
+        }
+        if (noNeedKeepTaxRecords) {
+            taxFeatures.add(
+                TaxFeatureEnum.NO_NEED_KEEP_TAX_RECORDS
+            );
+        }
+        if (noObligationSubmitDeclarations) {
+            taxFeatures.add(
+                TaxFeatureEnum.NO_OBLIGATION_SUBMIT_DECLARATIONS
+            );
+        }
+        Object maxAnnualIncomeThousandsRaw = delegateExecution.getVariable("maxAnnualIncomeThousands");
+        Object maxNumberEmployeesRaw = delegateExecution.getVariable("maxNumberEmployees");
+        Long maxAnnualIncomeThousands = null;
+        Long maxNumberEmployees = null;
+        if  (maxAnnualIncomeThousandsRaw != null) {
+            maxAnnualIncomeThousands = ((Number) maxAnnualIncomeThousandsRaw).longValue();
+        }
+        if  (maxNumberEmployeesRaw != null) {
+            maxNumberEmployees = ((Number) maxNumberEmployeesRaw).longValue();
+        }
         return new TaxRegimeChoice(
             taxpayerCategories,
             taxFeatures,
