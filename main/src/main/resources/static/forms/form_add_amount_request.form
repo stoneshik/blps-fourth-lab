@@ -12,16 +12,15 @@
     },
     {
       "label": "Id пользователя",
-      "type": "number",
+      "type": "textfield",
       "layout": {
         "row": "Row_107r6cm",
         "columns": null
       },
-      "id": "Field_0963dkh",
+      "id": "Field_160kgn1",
       "key": "userId",
       "validate": {
-        "required": true,
-        "min": 0
+        "required": true
       }
     },
     {

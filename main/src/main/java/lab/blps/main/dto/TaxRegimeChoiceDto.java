@@ -1,10 +1,11 @@
 package lab.blps.main.dto;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.validation.constraints.Min;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 public class TaxRegimeChoiceDto {
@@ -19,5 +20,5 @@ public class TaxRegimeChoiceDto {
     @JsonProperty("maxNumberEmployees")
     private Long maxNumberEmployees;
     @JsonProperty("userId")
-    private Long userId;
+    private String userId;
 }

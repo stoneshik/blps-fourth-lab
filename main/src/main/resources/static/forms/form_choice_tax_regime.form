@@ -118,16 +118,15 @@
     },
     {
       "label": "Id пользователя",
-      "type": "number",
+      "type": "textfield",
       "layout": {
         "row": "Row_1owivpa",
         "columns": null
       },
-      "id": "Field_17oorb8",
+      "id": "Field_0jsmkig",
       "key": "userId",
       "validate": {
-        "required": true,
-        "min": 0
+        "required": true
       }
     },
     {

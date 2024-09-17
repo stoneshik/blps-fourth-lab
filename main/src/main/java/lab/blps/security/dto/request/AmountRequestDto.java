@@ -9,5 +9,5 @@ import lombok.EqualsAndHashCode;
 @Data
 public class AmountRequestDto extends Dto {
     @Min(1)
-    private Long userId;
+    private String userId;
 }

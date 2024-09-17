@@ -1,8 +1,9 @@
-INSERT INTO roles(id, name)
+INSERT INTO users(id, user_id, amount_request)
 VALUES
-    (default, 'ROLE_ADMIN'),
-    (default, 'ROLE_USER')
+    (default, 'admin', 30),
+    (default, 'first', 30)
     ;
+
 INSERT INTO tax_regimes (
     id,
     title,
@@ -98,10 +99,4 @@ VALUES
     (default, 7, 'LEGAL_ENTITY'),  -- ОРН для ЮЛ
     (default, 9, 'LEGAL_ENTITY'),  -- АВТОУСН
     (default, 4, 'INDIVIDUAL')  -- НПД
-    ;
-
-INSERT INTO users(id, amount_request, description, login, name, password, surname)
-VALUES
-    (default, 30, 'user admin', 'admin', 'admin', '', 'admin'),
-    (default, 30, 'user first', 'first', 'first', '', 'first')
     ;
