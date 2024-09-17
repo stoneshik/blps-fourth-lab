@@ -29,6 +29,6 @@ public class ReadAllDelegate implements JavaDelegate {
             taxRegimeDtoList.add(MapTaxRegimeWithFeaturesAndCategory.mapToDto(taxRegime));
         }
         String responseString = objectMapper.writeValueAsString(taxRegimeDtoList);
-        delegateExecution.setVariable("response", (Object) responseString);
+        delegateExecution.setVariable("response", responseString);
     }
 }
