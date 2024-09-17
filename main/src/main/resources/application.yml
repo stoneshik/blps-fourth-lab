@@ -2,7 +2,7 @@ spring:
   application:
     name: main
   config:
-    import: optional:file:.env[.properties]
+    import: "classpath:.env[.properties]"
   datasource:
     url: ${DATASOURCE_URL}
     username: ${DATASOURCE_USERNAME}
