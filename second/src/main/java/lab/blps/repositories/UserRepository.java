@@ -28,20 +28,20 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Transactional
     @Modifying
     @Query(
-        "update User user set user.amountRequest = user.amountRequest + :addNumberRequest WHERE user.id = :userId"
+        "update User user set user.amountRequest = user.amountRequest + :addNumberRequest WHERE user.userId = :userId"
     )
     void addAmountRequest(
-        @Param("userId") Long userId,
+        @Param("userId") String userId,
         @Param("addNumberRequest") Integer addNumberRequest
     );
 
     @Transactional
     @Modifying
     @Query(
-        "update User user set user.amountRequest = user.amountRequest - :subNumberRequest WHERE user.id = :userId"
+        "update User user set user.amountRequest = user.amountRequest - :subNumberRequest WHERE user.userId = :userId"
     )
     void subAmountRequest(
-        @Param("userId") Long userId,
+        @Param("userId") String userId,
         @Param("subNumberRequest") Integer subNumberRequest
     );
 }

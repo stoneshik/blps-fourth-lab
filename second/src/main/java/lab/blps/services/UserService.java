@@ -17,11 +17,11 @@ public class UserService {
         userRepository.subAllUserAmountRequest(subNumberRequest);
     }
 
-    public void addAmountRequest(Long userId, int addNumberRequest) {
+    public void addAmountRequest(String userId, int addNumberRequest) {
         userRepository.addAmountRequest(userId, addNumberRequest);
     }
 
-    public void subAmountRequest(Long userId, int subNumberRequest) {
+    public void subAmountRequest(String userId, int subNumberRequest) {
         userRepository.subAmountRequest(userId, subNumberRequest);
     }
 }
